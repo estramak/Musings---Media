@@ -1,0 +1,30 @@
+body {
+    background-color: #541e19;
+}
+
+h1.uncial-antiqua-h1 {
+    font-family: "Uncial Antiqua", serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+h2.cormorant-h2 {
+    font-family: "Cormorant", serif;
+    font-optical-sizing: auto;
+    font-weight: 600;
+    font-style: italic;
+}
+
+h3.cormorant-h3 {
+    font-family: "Cormorant", serif;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-style: normal;
+}
+
+p.comorant-p {
+    font-family: "Cormorant", serif;
+    font-optical-sizing: auto;
+    font-weight: 300;
+    font-style: normal;
+}

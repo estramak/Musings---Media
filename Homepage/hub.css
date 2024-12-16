@@ -1,0 +1,139 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body, html {
+    height: 100%;
+    font-family: Arial, sans-serif;
+}
+
+
+
+.header h1{
+    text-align: center;
+    font-size: 100px;
+    margin: 10px 200px 20px;
+    text-shadow: 0 0 2px #000000;
+}
+
+
+
+.container {
+    display: flex;
+    flex-direction: row;
+    height: fit-content; /* Full viewport height */
+    margin: 0 200px;  
+}
+
+
+
+.navbar {
+    width: 25%; /* Fixed width for the navbar */
+    height: fit-content; /* Ensures the navbar spans the full height */
+    background-color: black;
+    padding-top: 20px;
+    position: sticky;
+    top: 0;
+    border-radius: 25px 0 0 25px;
+    overflow-y: auto; /* Allows scrolling in the navbar if it has too many items */
+}
+.logo img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+.navbar h3 {
+    margin: 40px 0;
+    cursor: pointer;
+    text-align: center;
+}
+.navbar h3 a {
+    text-decoration: none;
+    color: inherit;
+}
+.navbar h3 a:hover {
+    color: white;
+}
+.content {
+    background-color: #00000050;
+    width: 80%;
+    padding: 20px;
+    overflow-y: auto; /* Enables scrolling for the content area */
+    border-radius: 0 25px 25px 0;
+}
+.aboutme p{
+    font-size: 22px;
+    text-align: justify;
+}
+.about-img {
+    float: right;
+    margin: 20px 10px 0;
+    object-fit: cover;
+    width: 200px;
+    height: 200px;
+    object-position: 100% 0 ;
+    border-radius: 50%;
+}
+
+
+
+.tooltip {
+    position: relative; /* Set relative positioning for correct positioning of children */
+}
+
+.tooltip a {
+    color: white;
+}
+
+.tooltip a span {
+    visibility: hidden;
+    position: fixed;
+    right: 0; /* Position to the right of the link */
+    bottom: 0;
+    margin: 0 18px 80px 0;
+    background: #000000;
+    border: 1px solid #000000;
+    font-size: 0.8em;
+    padding: 0.3em;
+    cursor: default;
+    line-height: 1.4;
+    z-index: 10; /* Ensure tooltip is above other elements */
+    white-space: nowrap;
+}
+.tooltip a:hover span {
+    visibility: visible; /* Show tooltip on hover */
+}
+.logbook-img {
+    width: 50px;
+    float: right;
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    margin: 20px;
+    box-shadow: 0px 0px 1px 1px #ffffff1a;
+}
+.logbook-img {
+    width: 50px;
+    float: right;
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    margin: 20px;
+    box-shadow: 0px 0px 1px 1px #ffffff1a;
+}
+.pulse {
+    animation: pulse-animation 2s infinite;
+}
+  
+@keyframes pulse-animation {
+0% {
+    box-shadow: 0 0 0 0px rgba(255, 255, 255, 0.2);
+}
+100% {
+    box-shadow: 0 0 0 20px rgba(255, 255, 255, 0);
+}
+}
+  
+
