@@ -56,13 +56,18 @@ body, html {
 .navbar h3 a:hover {
     color: white;
 }
+
+
+
 .content {
     background-color: #00000050;
     width: 80%;
+    height: fit-content;
     padding: 20px;
-    overflow-y: auto; /* Enables scrolling for the content area */
+    overflow-y: visible; /* Allow content to grow without scrolling */
     border-radius: 0 25px 25px 0;
 }
+
 .aboutme p{
     font-size: 22px;
     text-align: justify;
@@ -77,6 +82,36 @@ body, html {
     border-radius: 50%;
 }
 
+
+
+.highlights {
+    display: flex;
+    flex-direction: row;
+    padding: 0 20px;
+}
+.interests {
+    width: 45%;
+}
+.interests ul {
+    padding-left: 20px;
+}
+.interests ul li {
+    padding: 4px 0;
+}
+
+.dialog {
+    width: 55%;
+}
+.view {
+    max-width: fit-content;
+}
+.wording {
+    padding: 10px 20px;
+    background-color: black;
+    padding-bottom: 10px;
+    border: 1px solid black;
+    border-radius: 0 0 25px 25px;
+}
 
 
 .tooltip {

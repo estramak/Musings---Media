@@ -37,22 +37,80 @@
                 </a>
                 <h2>About Me</h2>
                 <p>I always had a very long list of hobbies and interests, all coming and going throughout my life. It never seemed to have a specific trend though. This dot of data and growing rambles has been created because of one constant fixation within myself I have found though: the love of the human spirit and it's expression. You’ll find art, blogs, spirituality, hope, niches, poetry, and a particular level of spiraling insanity here in my little corner. It’s ever growing, ever evolving. I am enthralled with people and the physical manifestations of their lives and emotions: I hope you’ll join me in this interest, and welcome to my collection of Musings and Media &lt;3</p>
-                <hr/>
+                <hr/ >
             </div>
             <div class="highlights">
                 <div class="interests">
+                    <div class="recently-playing">
+                        <h2>Entranced By —</h2>
+                        
+                        <!-- CSS to initially hide the player container -->
+                        <style>
+                            #player-container {
+                                display: none; /* Initially hide the player */
+                            }
+                        </style>
 
+                        <!-- Image to toggle the player -->
+                        <img src="Images/b0dd371498f7ea7ca14a9165f2e9711f-ezgif.com-crop.gif" 
+                            alt="Toggle Music Player" 
+                            onclick="showPlayer()" 
+                            style="width: 250px; cursor: pointer;">
+
+                        <!-- Music Player Container -->
+                        <div id="player-container">
+                            <!-- Elfsight Music Player -->
+                            <script src="https://static.elfsight.com/platform/platform.js" async></script>
+                            <div class="elfsight-app-70d7dd66-7e6b-4025-9b9d-5ab8af416da5" data-elfsight-app-lazy></div>
+                        </div>
+
+                        <!-- JavaScript to show the player -->
+                        <script>
+                            function showPlayer() {
+                                var playerContainer = document.getElementById("player-container");
+                                if (playerContainer.style.display === "none" || playerContainer.style.display === "") {
+                                    // Show the player only once
+                                    playerContainer.style.display = "block";
+                                }
+                            }
+                        </script>
+
+                        <!-- Fallback for no JavaScript -->
+                        <noscript>
+                            <p>The music player requires JavaScript to function. Please enable JavaScript in your browser.</p>
+                        </noscript>
+                    </div>
+                    <h2>My Interests</h2>
+                    <ul>
+                        <li>video games</li>
+                        <li>programming</li>
+                        <li>digital art</li>
+                        <li>photography/videography</li>
+                        <li>roller skating</li>
+                        <li>writing (fiction/nonfiction)</li>
+                    </ul>
                 </div>
                 <div class="dialog">
-
+                    <h2>Latest Monologue</h2>
+                    <a href="#" style="text-decoration: none;">
+                        <div class="view">
+                            <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.mayfairgallery.com%2Fmedia%2Fcatalog%2Fproduct%2F1%2F5%2F15908-a-summer-repast-large-roman-classical-painting-by-boulanger-3-2000x.jpg&f=1&nofb=1&ipt=364a6ebc4e75da6a9e02376daeb01da3866d34d51bf99759ffcc2c9084e24155&ipo=images" style="width: 400px; margin-bottom: -3px;">
+                            <div class="wording">
+                                <h3>Title</h3>
+                                <p>supporting text</p>
+                            </div>
+                        </div>
+                    </a>
                 </div>
-                <div class="recently-playing">
 
-                </div>
+            <div class="">
+                
+            </div>
+                
             </div>
     </div>
     <div class="tooltip">
-        <a href="https://github.com/estramak/Musings---Media">
+        <a href="https://github.com/estramak/Musings---Media" target="_blank">
             <img src="Images/notebook-bookmark-svgrepo-com.svg" class="logbook-img pulse">
             <span>Logbook</span>
         </a>
