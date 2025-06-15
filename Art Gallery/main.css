@@ -1,8 +1,20 @@
-body {
+/*
+Default style, applies to whole page
+*/
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body, html {
     background-image: url('background-option.jpg');
     background-repeat: no-repeat;
     background-attachment: fixed;
     margin: 0px;
+    height: 100%;
+    font-family: Arial, sans-serif;
 }
 
 h1 {
