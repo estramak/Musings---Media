@@ -11,6 +11,8 @@
     <title>Art Gallery</title>
 </head>
 <body>
+
+    <!--full navbar-->
     <nav class="navbar">
         <div class="left-section">
             <div class="logo">
@@ -29,16 +31,55 @@
                 <li><a href="#">ART GALLERY</a></li>
                 <li><a href="#">DIGITAL GARDEN</a></li>
                 <li><a href="#">ALTARS</a></li>
-
             </ul>
         </div>
 
         <div class="right-section">
             <div class="guestbook">
-                <a href="#"><img src="Images/guestbook.gif" alt="Come sign my guestbook!"></a>
+                <a href="https://pub42.bravenet.com/guestbook/3567767585/" target="_blank"><img src="Images/guestbook.gif" alt="Come sign my guestbook!"></a>
             </div>
         </div>
     </nav>
+
+    <hr class="divider">
+
+    <div class="gallery" id="gallery">Loading...</div>
+
+    <script type="module">
+        import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm';
+
+        const supabaseUrl = 'https://shrkffkywalklzhtbaya.supabase.co';
+        const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InNocmtmZmt5d2Fsa2x6aHRiYXlhIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTAwMTUzMjIsImV4cCI6MjA2NTU5MTMyMn0.O2Kdi2OBvyWi8wdBx0j-BSzuW89Zpqsa4uEPjxVPhEA'; // Replace this
+        const supabase = createClient(supabaseUrl, supabaseKey);
+
+        const galleryContainer = document.getElementById('gallery');
+
+        async function loadGallery() {
+        const { data: artworks, error } = await supabase
+            .from('gallery')
+            .select('*')
+            .order('created_at', { ascending: false });
+
+        if (error) {
+            galleryContainer.innerHTML = `<p>Error loading gallery: ${error.message}</p>`;
+            return;
+        }
+
+        galleryContainer.innerHTML = artworks.map(item => `
+            <a href="${item.link_url}" target="_blank" class="art-item-link">
+                <div class="art-item">
+                <img src="${item.image_url}" alt="${item.title}" onerror="this.parentElement.style.display='none';">
+                <div class="overlay">
+                    <strong>${item.title}</strong><br>
+                    ${item.artist ?? 'Artist Unknown'}, ${item.year ?? 'Year Unknown'}
+                </div>
+                </div>
+            </a>
+        `).join('');
+        }
+
+        loadGallery();
+    </script>
 
 </body>
 </html>
