@@ -27,21 +27,25 @@
 
         <div class="center-section">
             <ul>
-                <li><a href="#">HUB</a></li>
-                <li><a href="#">ART GALLERY</a></li>
-                <li><a href="#">DIGITAL GARDEN</a></li>
-                <li><a href="#">ALTARS</a></li>
+                <li><a href="..\index.html">HUB</a></li>
+                <li><a href="#">MUSINGS</a></li>
+                <li><a href="https://http.cat/404">MEDIA</a></li>
+                <li><a href="https://http.cat/404">SHRINES</a></li>
             </ul>
         </div>
 
         <div class="right-section">
             <div class="guestbook">
-                <a href="https://pub42.bravenet.com/guestbook/3567767585/" target="_blank"><img src="Images/guestbook.gif" alt="Come sign my guestbook!"></a>
+                <a href="https://trialn1error.atabook.org/" target="_blank"><img src="Images/guestbook.gif" alt="Come sign my guestbook!"></a>
             </div>
         </div>
     </nav>
 
-    <hr class="divider">
+    <div class="page-intro">
+        <p>
+            Hint: the images with bookmark corners have articles linked to them. Go read em!
+        </p>
+    </div>
 
     <div class="gallery" id="gallery">Loading...</div>
 
@@ -49,7 +53,7 @@
         import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm';
 
         const supabaseUrl = 'https://shrkffkywalklzhtbaya.supabase.co';
-        const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InNocmtmZmt5d2Fsa2x6aHRiYXlhIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTAwMTUzMjIsImV4cCI6MjA2NTU5MTMyMn0.O2Kdi2OBvyWi8wdBx0j-BSzuW89Zpqsa4uEPjxVPhEA'; // Replace this
+        const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InNocmtmZmt5d2Fsa2x6aHRiYXlhIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTAwMTUzMjIsImV4cCI6MjA2NTU5MTMyMn0.O2Kdi2OBvyWi8wdBx0j-BSzuW89Zpqsa4uEPjxVPhEA';
         const supabase = createClient(supabaseUrl, supabaseKey);
 
         const galleryContainer = document.getElementById('gallery');
@@ -64,20 +68,35 @@
             galleryContainer.innerHTML = `<p>Error loading gallery: ${error.message}</p>`;
             return;
         }
+        
+        galleryContainer.innerHTML = artworks.map(item => {
+            const hasArticle = !!item.github_article;
+            const bookmarkHTML = hasArticle ? `<img class="bookmark" src="Images/bookmark.png" alt="Bookmark">` : '';
 
-        galleryContainer.innerHTML = artworks.map(item => `
-            <a href="${item.link_url}" target="_blank" class="art-item-link">
+            const content = `
                 <div class="art-item">
-                <img src="${item.image_url}" alt="${item.title}" onerror="this.parentElement.style.display='none';">
-                <div class="overlay">
-                    <strong>${item.title}</strong><br>
-                    ${item.artist ?? 'Artist Unknown'}, ${item.year ?? 'Year Unknown'}
+                    ${bookmarkHTML}
+                    <div class="image-box">
+                        <img src="${item.image_url}" alt="${item.title}" onerror="this.closest('.art-wrapper').style.display='none';">
+                        <div class="overlay">
+                            <strong>${item.title}</strong><br>
+                            ${item.artist ?? 'Artist Unknown'}, ${item.year ?? 'Year Unknown'}
+                        </div>
+                    </div>
                 </div>
-                </div>
-            </a>
-        `).join('');
-        }
+            `;
 
+            return `
+                <div class="art-wrapper">
+                    ${hasArticle
+                        ? `<a href="${item.github_article}" target="_blank" class="art-item-link">${content}</a>`
+                        : content
+                    }
+                </div>
+            `;
+        }).join('');
+
+        }
         loadGallery();
     </script>
 

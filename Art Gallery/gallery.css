@@ -1,90 +1,113 @@
-
+/* ----------------- NAVBAR ----------------- */
 .navbar {
-    margin: 0;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 20px;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px;
 }
 
-/* Optional container structure for better control */
 .navbar .left-section {
-    display: flex;
-    align-items: center;
-    gap: 20px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
 }
 
 .navbar .center-section {
-    flex-grow: 1;
-    display: flex;
-    justify-content: center;
-    padding-right: 10%;
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;
+  padding-right: 10%;
 }
 
 .navbar .right-section {
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
 }
 
 .navbar ul {
-    list-style: none;
-    display: flex;
-    gap: 20px;
-    margin: 0;
-    padding: 0;
+  list-style: none;
+  display: flex;
+  gap: 20px;
+  margin: 0;
+  padding: 0;
 }
 
 .navbar ul li a {
-    text-decoration: none;
-    color: black;
-    font-size: x-large;
-    font-weight: 700;
-    text-shadow: 0 0 3px #ffffff;
+  text-decoration: none;
+  color: black;
+  font-size: x-large;
+  font-weight: 700;
+  text-shadow: 0 0 3px #ffffff;
 }
 
 .navbar .guestbook img {
-    height: 70px;
+  height: 70px;
 }
 
 .header h1 {
-    font-size: 30px;
-    text-shadow: 0 0 3px #000000;
-    margin: 0;
+  font-size: 30px;
+  text-shadow: 0 0 3px #000000;
+  margin: 0;
 }
 
+.page-intro {
+  text-align: center;
+  background: linear-gradient(to right, rgba(255,255,255,0), rgba(40, 19, 19, 0.8), rgba(255,255,255,0));
+  margin: 0 200px;
+  padding: 10px 0;
+}
+
+/* ----------------- GENERAL LINKS ----------------- */
 a {
-    padding: 8px;
-    text-decoration: none;
-    color: #000000;
+  padding: 8px;
+  text-decoration: none;
+  color: #000000;
 }
 
 .center-section a:hover {
-    background-color: rgba(68, 54, 52, 0.59);
-    color: antiquewhite;
-    text-shadow: none;
-    transition: all 0.7s ease;
+  background-color: rgba(68, 54, 52, 0.59);
+  color: antiquewhite;
+  text-shadow: none;
+  transition: all 0.7s ease;
 }
 
+/* ----------------- GALLERY ----------------- */
 .gallery {
-  column-count: 4;
-  column-gap: 10px;         /* gap between columns */
-  max-width: 1600px;        /* max container width */
-  margin: 30px 20px;        /* center horizontally */
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  max-width: 1600px;
+  margin: 30px 20px;
 }
 
-.art-item {
-  break-inside: avoid;      /* avoid breaking items across columns */
-  margin-bottom: 16px;
+/* Wrapper for each artwork card */
+.art-wrapper {
+  width: calc(25% - 10px); /* 4 items per row with gap */
   position: relative;
-  display: block;
-  width: 100%;
-  box-sizing: border-box;
-  border-radius: 8px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
-  overflow: hidden;
+  padding: 0;
+  margin: 0;
 }
 
+.art-wrapper a {
+  padding: 0;
+}
+
+/* Card container */
+.art-item {
+  position: relative;
+  overflow: hidden;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+  cursor: default;
+}
+
+.art-item-link .art-item {
+  cursor: pointer;
+}
+
+/* Art image */
 .art-item img {
   width: 100%;
   height: auto;
@@ -96,12 +119,13 @@ a {
   transform: scale(1.05);
 }
 
+/* Overlay (title/artist/year) */
 .overlay {
   position: absolute;
   bottom: 0;
   left: 0;
   right: 0;
-  background: rgba(0,0,0,0.6);
+  background: rgba(0, 0, 0, 0.6);
   color: white;
   padding: 12px;
   font-size: 0.9rem;
@@ -113,22 +137,36 @@ a {
   opacity: 1;
 }
 
-/* Responsive adjustments */
+/* Bookmark icon */
+.bookmark {
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  width: 100px !important;
+  z-index: 2;
+  pointer-events: none;
+  filter: drop-shadow(0 0 2px white); /* optional glow */
+}
+
+/* ----------------- RESPONSIVE ----------------- */
 @media (max-width: 1000px) {
-  .gallery {
-    column-width: 200px;
+  .art-wrapper {
+    width: calc(33.333% - 10px); /* 3 per row */
   }
 }
 
-@media (max-width: 600px) {
-  .gallery {
-    column-width: 100%;
+@media (max-width: 700px) {
+  .art-wrapper {
+    width: calc(50% - 10px); /* 2 per row */
   }
+}
+
+@media (max-width: 500px) {
+  .art-wrapper {
+    width: 100%; /* 1 per row */
+  }
+
   .overlay {
     font-size: 0.8rem;
   }
 }
-
-
-
-

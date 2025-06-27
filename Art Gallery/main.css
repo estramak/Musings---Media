@@ -55,10 +55,6 @@ p {
     cursor: default;
 }
 
-hr {
-    margin: 30px 10px;
-}
-
 ul li {
     font-family: "Cormorant", serif;
     font-optical-sizing: auto;

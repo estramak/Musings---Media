@@ -26,7 +26,7 @@ body, html {
 .navbar {
     width: 25%; /* Fixed width for the navbar */
     height: fit-content; /* Ensures the navbar spans the full height */
-    background-color: black;
+    background-color: #170D01;
     padding-top: 20px;
     position: sticky;
     top: 0;
@@ -54,7 +54,7 @@ body, html {
 
 
 .content {
-    background-color: #00000050;
+    background-color: #170d0193;
     width: 80%;
     height: fit-content;
     padding: 20px;
@@ -68,7 +68,7 @@ body, html {
 }
 .about-img {
     float: right;
-    margin: 20px 10px 0;
+    margin: 20px;
     object-fit: cover;
     width: 200px;
     height: 200px;
@@ -100,9 +100,9 @@ body, html {
 }
 .wording {
     padding: 10px 20px;
-    background-color: black;
+    background-color: #170D01;
     padding-bottom: 10px;
-    border: 1px solid black;
+    border: 1px solid #170D01;
     border-radius: 0 0 25px 25px;
 }
 

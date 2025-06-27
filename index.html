@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,300..700;1,300..700&family=Uncial+Antiqua&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="hub.css">
+    <title>Homepage</title>
+</head>
+<body>
+    <div class="header">
+        <h1>Musings & Media</h1>
+    </div>
+    <div class="container">
+        <!-- Navbar Section -->
+        <nav class="navbar">
+            <div class="logo">
+                <img src="Images/file.png" alt="Musings & Media Logo" style="height: 100px;">
+            </div>
+            <div class="links">
+                <h3><a href="#">HUB</a></h3>
+                <h3><a href="..\Art Gallery\gallery.html">MUSINGS</a></h3>
+                <h3><a href="https://http.cat/404">MEDIA</a></h3>
+                <h3><a href="https://http.cat/404">SHRINES</a></h3>
+                <h3><a href="https://trialn1error.atabook.org/" target="_blank">GUESTBOOK</a></h3>
+            </div>
+        </nav>
+
+        <!-- Content Section -->
+        <div class="content">
+            <div class="aboutme">
+                <a href="https://www.scadmoa.org/permanent-collections/pieces/madonna-self-portrait" target="_blank">
+                    <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.scadmoa.org%2Fsites%2Fmoa%2Ffiles%2Fstyles%2F768_width_no_crop%2Fpublic%2Fimages%2FCindySherman_MadonnaSelf.jpg%3Fitok%3DXD0smeNn&f=1&nofb=1&ipt=c1004ab61f0a52b42e5cb7f213a95162f191b545fc9f9c022711e2af7bfd2f03&ipo=images" style="height: 200px;" class="about-img">
+                </a>
+                <h2>About Me</h2>
+                <p>I’ve carried countless hobbies and curiosities through the years—drifting in and out like passing seasons. No clear pattern, no tidy category. But behind the ever-changing interests, there’s always been one constant thread: a quiet obsession with the human spirit and how it reveals itself.
+                <br>
+                This space is born from that fixation. Here, you’ll stumble upon strange art, scattered thoughts, fragments of hope, shadowed reflections, and the occasional descent into beautiful madness. It’s not linear, and it’s not meant to be.
+                <br>
+                I’m captivated by people—their lives, their marks, their chaos and creation. If you find yourself drawn to the same, then you’re already home. Welcome to my realm of Musings and Media. &lt;3
+                </p>
+                <hr/ >
+            </div>
+            <div class="highlights">
+                <div class="interests">
+                    <div class="recently-playing">
+                    <h2>Entranced By —</h2>
+
+                    <!-- Clickable cover -->
+                    <img id="music-toggle"
+                        src="Images/b0dd371498f7ea7ca14a9165f2e9711f-ezgif.com-crop.gif"
+                        alt="Toggle music player"
+                        style="width:250px;cursor:pointer;">
+
+                    <!-- Empty container; we’ll fill it later -->
+                    <div id="player-container" style="display:none;"></div>
+                    </div>
+
+                    <script>
+                    document.getElementById('music-toggle').addEventListener('click', function () {
+                        const box = document.getElementById('player-container');
+
+                        // First click → build the widget
+                        if (!box.dataset.loaded) {
+                        const widget = document.createElement('div');
+                        widget.className = 'elfsight-app-70d7dd66-7e6b-4025-9b9d-5ab8af416da5';
+                        box.appendChild(widget);
+
+                        const s = document.createElement('script');
+                        s.src = 'https://static.elfsight.com/platform/platform.js';
+                        s.defer = true;      // load after HTML parsing
+                        box.appendChild(s);
+
+                        box.dataset.loaded = 'true';   // remember
+                        }
+
+                        // Show (or hide) the player
+                        box.style.display = box.style.display === 'block' ? 'none' : 'block';
+                    });
+                    </script>
+
+                    <h2>My Interests</h2>
+                    <ul>
+                        <li>video games</li>
+                        <li>programming</li>
+                        <li>digital art</li>
+                        <li>photography/videography</li>
+                        <li>roller skating</li>
+                        <li>writing (fiction/nonfiction)</li>
+                    </ul>
+                </div>
+
+    <script type="module">
+        import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm';
+
+        // Initialize Supabase
+        const supabase = createClient('https://shrkffkywalklzhtbaya.supabase.co', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InNocmtmZmt5d2Fsa2x6aHRiYXlhIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTAwMTUzMjIsImV4cCI6MjA2NTU5MTMyMn0.O2Kdi2OBvyWi8wdBx0j-BSzuW89Zpqsa4uEPjxVPhEA');
+
+        async function loadLatestMonologue() {
+            const { data, error } = await supabase
+            .from('gallery') // e.g., 'monologues'
+            .select('*')
+            .not('github_article', 'is', null)
+            .order('created_at', { ascending: false }) // or 'id'
+            .limit(1);
+
+            if (error) {
+            console.error('Error fetching latest monologue:', error);
+            return;
+            }
+
+            if (data.length === 0) return;
+
+            const latest = data[0];
+
+            document.getElementById('monologue-image').src = latest.image_url;
+            document.getElementById('monologue-title').textContent = latest.title;
+            document.getElementById('monologue-description').textContent = latest.description;
+            document.getElementById('monologue-link').href = latest.github_article;
+        }
+
+        loadLatestMonologue();
+    </script>
+
+
+    <div class="dialog">
+        <h2>Latest Monologue</h2>
+        <a href="#" id="monologue-link" style="text-decoration: none; " target="_blank;">
+            <div class="view">
+            <img id="monologue-image" src="" style="width: fit-content; height: 500px; object-fit: cover; object-position: top;">
+            <div class="wording">
+                <h3 id="monologue-title"></h3>
+                <p id="monologue-description"></p>
+            </div>
+            </div>
+        </a>
+    </div>
+
+    </div>
+    <div class="tooltip">
+        <a href="https://github.com/estramak/Musings---Media" target="_blank">
+            <img src="Images/notebook-bookmark-svgrepo-com.svg" class="logbook-img pulse">
+            <span>Logbook</span>
+        </a>
+    </div>    
+    
+</body>
+</html>
