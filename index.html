@@ -82,7 +82,7 @@
                     });
                     </script>
 
-                    <h2>My Interests</h2>
+                    <h2>My Interests —</h2>
                     <ul>
                         <li>video games</li>
                         <li>programming</li>
@@ -93,52 +93,69 @@
                     </ul>
                 </div>
 
-    <script type="module">
-        import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm';
+                <script type="module">
+                    import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm';
 
-        // Initialize Supabase
-        const supabase = createClient('https://shrkffkywalklzhtbaya.supabase.co', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InNocmtmZmt5d2Fsa2x6aHRiYXlhIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTAwMTUzMjIsImV4cCI6MjA2NTU5MTMyMn0.O2Kdi2OBvyWi8wdBx0j-BSzuW89Zpqsa4uEPjxVPhEA');
+                    // Initialize Supabase
+                    const supabase = createClient('https://shrkffkywalklzhtbaya.supabase.co', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InNocmtmZmt5d2Fsa2x6aHRiYXlhIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTAwMTUzMjIsImV4cCI6MjA2NTU5MTMyMn0.O2Kdi2OBvyWi8wdBx0j-BSzuW89Zpqsa4uEPjxVPhEA');
 
-        async function loadLatestMonologue() {
-            const { data, error } = await supabase
-            .from('gallery') // e.g., 'monologues'
-            .select('*')
-            .not('github_article', 'is', null)
-            .order('created_at', { ascending: false }) // or 'id'
-            .limit(1);
+                    async function loadLatestMonologue() {
+                        const { data, error } = await supabase
+                        .from('gallery') // e.g., 'monologues'
+                        .select('*')
+                        .not('github_article', 'is', null)
+                        .order('created_at', { ascending: false }) // or 'id'
+                        .limit(1);
 
-            if (error) {
-            console.error('Error fetching latest monologue:', error);
-            return;
-            }
+                        if (error) {
+                        console.error('Error fetching latest monologue:', error);
+                        return;
+                        }
 
-            if (data.length === 0) return;
+                        if (data.length === 0) return;
 
-            const latest = data[0];
+                        const latest = data[0];
 
-            document.getElementById('monologue-image').src = latest.image_url;
-            document.getElementById('monologue-title').textContent = latest.title;
-            document.getElementById('monologue-description').textContent = latest.description;
-            document.getElementById('monologue-link').href = latest.github_article;
-        }
+                        document.getElementById('monologue-image').src = latest.image_url;
+                        document.getElementById('monologue-title').textContent = latest.title;
+                        document.getElementById('monologue-description').textContent = latest.description;
+                        document.getElementById('monologue-link').href = latest.github_article;
+                    }
 
-        loadLatestMonologue();
-    </script>
+                    loadLatestMonologue();
+                </script>
 
 
-    <div class="dialog">
-        <h2>Latest Monologue</h2>
-        <a href="#" id="monologue-link" style="text-decoration: none; " target="_blank;">
-            <div class="view">
-            <img id="monologue-image" src="" style="width: fit-content; height: 500px; object-fit: cover; object-position: top;">
-            <div class="wording">
-                <h3 id="monologue-title"></h3>
-                <p id="monologue-description"></p>
+                <div class="dialog">
+                    <h2>Latest Monologue —</h2>
+                    <a href="#" id="monologue-link" style="text-decoration: none; " target="_blank;">
+                        <div class="view">
+                        <img id="monologue-image" src="" style="width: fit-content; height: 500px; object-fit: cover; object-position: top;">
+                        <div class="wording">
+                            <h3 id="monologue-title"></h3>
+                            <p id="monologue-description"></p>
+                        </div>
+                        </div>
+                    </a>
+                </div>
             </div>
-            </div>
-        </a>
-    </div>
 
+            <div class="book-sec">
+                <h2 style="margin-bottom: 10px;">Favorite Reads —</h2>
+                <div class="books">
+                    <a href="https://search.worldcat.org/title/1037137281" target="_blank"><img src="Images/bookSpines/PXL_20250704_041223884.png"></a>
+                    <a href="https://search.worldcat.org/title/1243279532" target="_blank"><img src="Images/bookSpines/PXL_20250704_041241218.png"></a>
+                    <a href="https://search.worldcat.org/title/957142285" target="_blank"><img src="Images/bookSpines/PXL_20250704_041255311.png"></a>
+                    <a href="https://search.worldcat.org/title/947074830" target="_blank"><img src="Images/bookSpines/PXL_20250704_041318501.png"></a>
+                    <a href="https://search.worldcat.org/title/1351599336" target="_blank"><img src="Images/bookSpines/PXL_20250704_041333108.png"></a>
+                    <a href="https://search.worldcat.org/title/1244155817" target="_blank"><img src="Images/bookSpines/PXL_20250704_041343969.png"></a>
+                </div>
+                <div class="bookshelf">
+                    <img src="Images/bookSpines/floating_shelf-removebg-preview.png">
+                </div>
+            </div>
+
+        </div>
     </div>
     <div class="tooltip">
         <a href="https://github.com/estramak/Musings---Media" target="_blank">

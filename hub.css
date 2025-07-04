@@ -163,5 +163,30 @@ body, html {
     box-shadow: 0 0 0 20px rgba(255, 255, 255, 0);
 }
 }
-  
 
+.book-sec {
+    margin-top: 50px;
+    max-width: 50%;
+}
+.books {
+    display: flex;
+    flex-wrap: nowrap;
+    max-width: 50%;
+    margin: auto;
+    
+}
+
+.books img {
+    max-height: 400px;
+    transition: all 0.7s ease;
+}
+
+.books img:hover {
+    margin-top: -20px;
+    transition: all 0.7s ease;
+}
+
+.bookshelf {
+    display: block;
+    flex-wrap: wrap;
+}
