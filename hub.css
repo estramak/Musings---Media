@@ -173,16 +173,19 @@ body, html {
     flex-wrap: nowrap;
     max-width: 50%;
     margin: auto;
-    
+
 }
 
 .books img {
-    max-height: 400px;
+    position: relative;
+    max-height: 350px;
     transition: all 0.7s ease;
 }
 
 .books img:hover {
+    max-height: 390px;
     margin-top: -20px;
+    margin-bottom: -20px;
     transition: all 0.7s ease;
 }
 
