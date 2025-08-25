@@ -1,10 +1,20 @@
-body {
+/*
+Default style, applies to whole page
+*/
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body, html {
     background-image: url('background-option.jpg');
     background-repeat: no-repeat;
     background-attachment: fixed;
     margin: 0px;
+    height: 100%;
     font-family: Arial, sans-serif;
-    
 }
 
 h1 {
@@ -40,13 +50,9 @@ p {
     font-optical-sizing: auto;
     font-weight: 400;
     font-style: normal;
-    color: antiquewhite;
+    color: white;
     font-size: 20px;
     cursor: default;
-}
-
-hr {
-    margin: 30px 10px;
 }
 
 ul li {
@@ -54,8 +60,16 @@ ul li {
     font-optical-sizing: auto;
     font-weight: 400;
     font-style: normal;
-    color: antiquewhite;
+    color: white;
     font-size: 20px;
     cursor: default;
 }
+
+hr {
+  border: none;
+  height: 2px;
+  background: linear-gradient(to right, rgba(255,255,255,0), rgba(255,255,255,0.8), rgba(255,255,255,0));
+  margin: 40px 120px;
+}
+
 

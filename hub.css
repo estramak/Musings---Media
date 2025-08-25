@@ -1,4 +1,4 @@
-/* General Reset */
+/* ----------------- GENERAL RESET ----------------- */
 * {
     margin: 0;
     padding: 0;
@@ -9,6 +9,7 @@ body, html {
     font-family: Arial, sans-serif;
 }
 
+/* ----------------- HEADER ----------------- */
 .header h1{
     text-align: center;
     font-size: 100px;
@@ -16,27 +17,30 @@ body, html {
     text-shadow: 0 0 2px #000000;
 }
 
+/* ----------------- CONTAINER ----------------- */
 .container {
     display: flex;
     flex-direction: row;
-    height: fit-content; /* Full viewport height */
+    height: fit-content; 
     margin: 0 200px;  
 }
 
+/* ----------------- NAVBAR ----------------- */
 .navbar {
-    width: 25%; /* Fixed width for the navbar */
-    height: fit-content; /* Ensures the navbar spans the full height */
+    width: 25%;
+    height: fit-content;
     background-color: #170D01;
     padding-top: 20px;
     position: sticky;
     top: 0;
     border-radius: 25px 0 0 25px;
-    overflow-y: auto; /* Allows scrolling in the navbar if it has too many items */
+    overflow-y: auto;
 }
 .logo img {
     display: block;
     margin-left: auto;
     margin-right: auto;
+    height: 100px; /* moved from HTML */
 }
 .navbar h3 {
     margin: 40px 0;
@@ -51,17 +55,17 @@ body, html {
     color: white;
 }
 
-
-
+/* ----------------- CONTENT ----------------- */
 .content {
     background-color: #170d0193;
     width: 80%;
     height: fit-content;
     padding: 20px;
-    overflow-y: visible; /* Allow content to grow without scrolling */
+    overflow-y: visible;
     border-radius: 0 25px 25px 0;
 }
 
+/* ----------------- ABOUT ME ----------------- */
 .aboutme p{
     font-size: 22px;
     text-align: justify;
@@ -76,7 +80,13 @@ body, html {
     border-radius: 50%;
 }
 
+/* ----------------- MUSIC PLAYER ------------------ */
 
+#music-toggle {
+    max-width: 100%;
+}
+
+/* ----------------- HIGHLIGHTS ----------------- */
 .highlights {
     display: flex;
     flex-direction: row;
@@ -93,7 +103,8 @@ body, html {
 }
 
 .dialog {
-    width: 55%;
+    max-width: 55%;
+    height: auto;
 }
 .view {
     max-width: fit-content;
@@ -105,20 +116,25 @@ body, html {
     border: 1px solid #170D01;
     border-radius: 0 0 25px 25px;
 }
-
-
-.tooltip {
-    position: relative; /* Set relative positioning for correct positioning of children */
+#monologue-image {
+    display: block;
+    max-width: 100%; /* moved from HTML */
+    height: auto;
+    object-fit: cover;
+    object-position: top;
 }
 
+/* ----------------- TOOLTIP ----------------- */
+.tooltip {
+    position: relative;
+}
 .tooltip a {
     color: white;
 }
-
 .tooltip a span {
     visibility: hidden;
     position: fixed;
-    right: 0; /* Position to the right of the link */
+    right: 0;
     bottom: 0;
     margin: 0 18px 80px 0;
     background: #000000;
@@ -127,11 +143,11 @@ body, html {
     padding: 0.3em;
     cursor: default;
     line-height: 1.4;
-    z-index: 10; /* Ensure tooltip is above other elements */
+    z-index: 10;
     white-space: nowrap;
 }
 .tooltip a:hover span {
-    visibility: visible; /* Show tooltip on hover */
+    visibility: visible;
 }
 .logbook-img {
     width: 50px;
@@ -142,28 +158,22 @@ body, html {
     margin: 20px;
     box-shadow: 0px 0px 1px 1px #ffffff1a;
 }
-.logbook-img {
-    width: 50px;
-    float: right;
-    position: fixed;
-    bottom: 0;
-    right: 0;
-    margin: 20px;
-    box-shadow: 0px 0px 1px 1px #ffffff1a;
-}
+
+/* ----------------- ANIMATION ----------------- */
 .pulse {
     animation: pulse-animation 2s infinite;
 }
-  
 @keyframes pulse-animation {
-0% {
-    box-shadow: 0 0 0 0px rgba(255, 255, 255, 0.2);
-}
-100% {
-    box-shadow: 0 0 0 20px rgba(255, 255, 255, 0);
-}
+    0% {
+        box-shadow: 0 0 0 0px rgba(255, 255, 255, 0.2);
+        border-radius: 0%;
+    }
+    100% {
+        box-shadow: 0 0 0 20px rgba(255, 255, 255, 0);
+    }
 }
 
+/* ----------------- BOOKS ----------------- */
 .book-sec {
     margin-top: 50px;
     max-width: 50%;
@@ -173,23 +183,58 @@ body, html {
     flex-wrap: nowrap;
     max-width: 50%;
     margin: auto;
-
 }
-
 .books img {
     position: relative;
     max-height: 350px;
     transition: all 0.7s ease;
 }
-
 .books img:hover {
-    max-height: 390px;
-    margin-top: -20px;
-    margin-bottom: -20px;
-    transition: all 0.7s ease;
+    transform: scale(1.1);
 }
-
 .bookshelf {
     display: block;
     flex-wrap: wrap;
+}
+
+/* ----------------- RESPONSIVE ----------------- */
+@media (max-width: 1200px) {
+    .container { flex-direction: column; margin: 0 20px; }
+    .content { width: 100%; border-radius: 25px; }
+    .highlights { flex-direction: row; }
+    .interests, .dialog { width: 100%; }
+    .about-img { float: right; margin: 0 10px; }
+    .navbar {
+        width: 100%;               /* full width */
+        display: flex;
+        flex-direction: row;       /* horizontal layout */
+        justify-content: center;   /* center the links */
+        border-radius: 25px;       /* round all corners */
+        padding: 10px 0;
+        overflow-x: auto;          /* allow scrolling if links overflow */
+        position: static;
+    }
+
+    .navbar h3 { margin: 0 15px;}  /* spacing between horizontal links */
+
+    .logo img {
+        height: 70px;              /* optional: shrink logo on smaller screen */
+        margin-right: 20px;
+    }
+}
+
+@media (max-width: 768px) {
+    .content { justify-content: center; align-items: center }
+    .highlights { flex-direction: column;}
+    .header h1 { font-size: 3rem; margin: 20px 10px; }
+    .books img { max-height: 150px; }
+    .wording { padding: 8px 10px; font-size: 0.9rem; }
+}
+
+@media (max-width: 480px) {
+    .header h1 { font-size: 2rem; }
+    .aboutme p { font-size: 1rem; }
+    .books img { max-height: 120px; }
+    .navbar h3 { font-size: 1rem; margin: 20px 0; }
+    .dialog {max-width: 100%; height: auto;}
 }
