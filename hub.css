@@ -22,7 +22,9 @@ body, html {
     display: flex;
     flex-direction: row;
     height: fit-content; 
-    margin: 0 200px;  
+    width: 80vw;
+    max-width: 100vw;
+    margin: 0 auto;
 }
 
 /* ----------------- NAVBAR ----------------- */
@@ -197,30 +199,108 @@ body, html {
     flex-wrap: wrap;
 }
 
+/* ----------------- BOOKS GALLERY ----------------- */
+
+.gallery {
+    max-width: 100vw;
+    height: auto;
+    padding: 20px;
+    display: flex;
+    gap: 4vw;
+
+    overflow-x: scroll;
+    scroll-snap-type: x mandatory;
+
+}
+
+.page {
+    display: flex;
+    border: 2px dotted #eadbdb;
+    flex: 0 0 100%;
+    padding: 10px;
+    scroll-snap-align: center;
+    align-items: center;
+}
+
+.cover {
+    flex: 40%;
+    align-items: center;
+    
+}
+
+.cover img {
+    max-width: fit-content;
+    max-height: 300px;
+    padding: 15px;
+    justify-content: center;
+}
+
+.description {
+    flex: 60%;
+}
+
+::-webkit-scrollbar {
+
+  height: 12px;             /* horizontal scrollbar height */
+}
+
+/* Track (background behind the thumb) */
+::-webkit-scrollbar-track {
+  background: rgba(255, 255, 253, 0.322);       /* light gray */
+  border-radius: 6px;
+}
+
+/* Thumb (the draggable handle) */
+::-webkit-scrollbar-thumb {
+  background: #ECD3BF;          /* medium gray */
+  border-radius: 6px;
+}
+
 /* ----------------- RESPONSIVE ----------------- */
 @media (max-width: 1200px) {
-    .container { flex-direction: column; margin: 0 20px; }
+    .container { flex-direction: column; width: 100%; margin: 0 10px; }
     .content { width: 100%; border-radius: 25px; }
     .highlights { flex-direction: row; }
     .interests, .dialog { width: 100%; }
     .about-img { float: right; margin: 0 10px; }
     .navbar {
-        width: 100%;               /* full width */
         display: flex;
-        flex-direction: row;       /* horizontal layout */
-        justify-content: center;   /* center the links */
-        border-radius: 25px;       /* round all corners */
-        padding: 10px 0;
-        overflow-x: auto;          /* allow scrolling if links overflow */
-        position: static;
+        flex-direction: row;
+        align-items: center;     /* vertical alignment */
+        justify-content: center; /* center as a group */
+        width: 100%;
+        padding: 10px 20px;
+        border-radius: 25px;
+        overflow-x: auto;
+        justify-content: space-around;
     }
 
-    .navbar h3 { margin: 0 15px;}  /* spacing between horizontal links */
+        /* Don’t let wrappers stretch full width */
+    .navbar > div {
+        flex: 0 0 auto; /* shrink-wrap to content */
+    }
+
+        /* Style links inside links wrapper */
+    .links {
+        display: flex;            /* make links horizontal */
+        flex-direction: row;
+    }
+
+    .links h3 {
+        margin: 0 15px;
+        white-space: nowrap;
+    }
 
     .logo img {
-        height: 70px;              /* optional: shrink logo on smaller screen */
+        height: 70px;
         margin-right: 20px;
     }
+
+    .neo-button { margin-left: 60px;}
+
+    .page { justify-content: space-around; }
+
+    .cover { flex: 1;}
 }
 
 @media (max-width: 768px) {
@@ -229,11 +309,13 @@ body, html {
     .header h1 { font-size: 3rem; margin: 20px 10px; }
     .books img { max-height: 150px; }
     .wording { padding: 8px 10px; font-size: 0.9rem; }
+    .page { display: block; }
+    .cover { float: inline-start;}
 }
 
 @media (max-width: 480px) {
     .header h1 { font-size: 2rem; }
-    .aboutme p { font-size: 1rem; }
+    p { font-size: 1rem; }
     .books img { max-height: 120px; }
     .navbar h3 { font-size: 1rem; margin: 20px 0; }
     .dialog {max-width: 100%; height: auto;}
